@@ -37,7 +37,7 @@ spec:
   http:
     - route:
         - destination:
-            host: ollama-ia-service.ollama-ia.svc.cluster.local
+            host: open-webui.ollama-ia.svc.cluster.local
             port:
-              number: 11434
+              number: 8080
           weight: 100
