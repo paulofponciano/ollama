@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: ollama
+        intent: ia-llm
     spec:
       containers:
       - name: ollama
@@ -27,3 +28,8 @@ spec:
             cpu: "2"
         ports:
         - containerPort: 11434
+      tolerations:
+      - key: "intent"
+        operator: "Equal"
+        value: "ia-llm"
+        effect: "NoSchedule"

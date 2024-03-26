@@ -1,0 +1,36 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: pegasus-llm
+  namespace: kube-system
+spec:
+  # consolidation:
+  #   enabled: true
+  # weight: 100
+  labels:
+    intent: ia-llm
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["spot"]
+    - key: karpenter.k8s.aws/instance-size
+      operator: In
+      values: ["medium", "large", "2xlarge", "4xlarge"]
+    - key: karpenter.k8s.aws/instance-family
+      operator: In
+      values: ["p3"]
+    - key: "topology.kubernetes.io/zone"
+      operator: In
+      values: ["us-east-2a", "us-east-2b"]
+  limits:
+    resources:
+      cpu: 1000
+      memory: 1000Gi
+  ttlSecondsAfterEmpty: 30
+  ttlSecondsUntilExpired: 2592000
+  taints:
+  - key: "intent"
+    value: "ia-llm"
+    effect: "NoSchedule" 
+  providerRef:
+    name: my-provider
