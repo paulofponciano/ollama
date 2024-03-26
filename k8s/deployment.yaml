@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: olama-ia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:latest
+        imagePullPolicy: 'IfNotPresent'
+        resources:
+      requests:
+        memory: "2Gi"
+        cpu: "1"
+      limits:
+        memory: "4Gi"
+        cpu: "2"
+    ports:
+    - containerPort: 11434
