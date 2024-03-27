@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: ollama
-        intent: ia-llm
+        provisioner: pegasus-llm
     spec:
       containers:
       - name: ollama
@@ -29,7 +29,9 @@ spec:
         ports:
         - containerPort: 11434
       tolerations:
-      - key: "intent"
+      - key: "provisioner"
         operator: "Equal"
-        value: "ia-llm"
+        value: "pegasus-llm"
         effect: "NoSchedule"
+      nodeSelector:
+        provisioner: pegasus-llm

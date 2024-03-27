@@ -55,7 +55,7 @@ metadata:
 spec:
   storageClassName: gp3
   capacity:
-    storage: 2G
+    storage: 8G
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -72,7 +72,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 8Gi
 ---
 kind: Secret
 apiVersion: v1
