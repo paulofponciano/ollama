@@ -22,6 +22,6 @@ helm upgrade --install ollama ollama-helm/ollama --namespace ollama-ia --values 
 ## Deploy Open WebUI with istio ingress
 
 ```sh
-kubectl apply -f ui.yaml
+kubectl apply -f open-webui.yaml
 ```
 ---
