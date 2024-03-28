@@ -33,5 +33,5 @@ spec:
         operator: "Equal"
         value: "pegasus-llm"
         effect: "NoSchedule"
-      nodeSelector:
-        provisioner: pegasus-llm
+      # nodeSelector:
+      #   provisioner: pegasus-llm
